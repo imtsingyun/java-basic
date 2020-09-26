@@ -14,7 +14,7 @@ package org.mindidea.demo01;
  * @version V1.0
  * @createTime 2020/9/26 22:34
  */
-public class Demo03 {
+public class Demo03Wait {
 
     private static volatile Object resourceA = new Object();
     private static volatile Object resourceB = new Object();

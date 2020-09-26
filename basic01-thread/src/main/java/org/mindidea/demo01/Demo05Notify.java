@@ -13,7 +13,7 @@ package org.mindidea.demo01;
  * @version V1.0
  * @createTime 2020/9/26 23:10
  */
-public class Demo05 {
+public class Demo05Notify {
 
     private static volatile Object resourceA = new Object();
 

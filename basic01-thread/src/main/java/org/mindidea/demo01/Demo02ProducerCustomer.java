@@ -14,7 +14,7 @@ import java.util.concurrent.ArrayBlockingQueue;
  * @version V1.0
  * @createTime 2020/9/26 21:34
  */
-public class Demo02 {
+public class Demo02ProducerCustomer {
 
     private static final int MAX_SIZE = 10;
     static final Queue<String> queue = new ArrayBlockingQueue<String>(MAX_SIZE);

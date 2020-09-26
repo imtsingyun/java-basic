@@ -14,7 +14,7 @@ package org.mindidea.demo01;
  * @version V1.0
  * @createTime 2020/9/26 22:48
  */
-public class Demo04 {
+public class Demo04Interrupt {
     static Object obj = new Object();
 
     public static void main(String[] args) throws InterruptedException {
