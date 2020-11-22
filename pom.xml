@@ -11,6 +11,9 @@
     <description>Java 基础知识</description>
     <modules>
         <module>basic01-thread</module>
+        <module>basic01-generic</module>
+        <module>java-core01-concurrency</module>
+        <module>design-pattern</module>
     </modules>
 
 
