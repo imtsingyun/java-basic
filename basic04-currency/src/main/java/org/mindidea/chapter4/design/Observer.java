@@ -4,7 +4,7 @@
  * @date 2020/11/28 18:58
  * Copyright (c) 2020 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea.chapter4;
+package org.mindidea.chapter4.design;
 
 /**
  * @author Tsingyun(青雲)

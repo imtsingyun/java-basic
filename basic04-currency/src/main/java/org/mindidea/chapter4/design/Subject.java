@@ -4,7 +4,9 @@
  * @date 2020/11/28 18:57
  * Copyright (c) 2020 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea.chapter4;
+package org.mindidea.chapter4.design;
+
+import org.mindidea.chapter4.design.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
