@@ -12,7 +12,7 @@ package org.mindidea.chapter4;
  * @createTime 2020/11/29 0:33
  * @blog https://mindidea.org
  */
-public class ObservableRunnable implements Runnable {
+public abstract class ObservableRunnable implements Runnable {
 
     final protected LifeCycleListener listener;
 
@@ -22,11 +22,6 @@ public class ObservableRunnable implements Runnable {
 
     protected void notifyChange(final RunnableEvent event) {
         listener.onEvent(event);
-    }
-
-    @Override
-    public void run() {
-
     }
 
     public enum RunnableState {
@@ -56,5 +51,4 @@ public class ObservableRunnable implements Runnable {
             return cause;
         }
     }
-
 }
