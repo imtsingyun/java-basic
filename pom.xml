@@ -15,5 +15,7 @@
         <module>basic03-currency</module>
         <module>basic04-currency</module>
         <module>basic10-designPattern</module>
+        <module>basic99-ConcurrentyInPractice</module>
+        <module>zookeeper-demo</module>
     </modules>
 </project>
