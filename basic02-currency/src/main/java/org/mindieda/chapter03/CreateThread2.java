@@ -6,8 +6,6 @@
  */
 package org.mindieda.chapter03;
 
-import com.sun.xml.internal.ws.message.stream.StreamHeader;
-
 import java.util.Arrays;
 
 /**

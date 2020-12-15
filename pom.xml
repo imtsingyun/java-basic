@@ -17,5 +17,12 @@
         <module>basic10-designPattern</module>
         <module>basic99-ConcurrentyInPractice</module>
         <module>zookeeper-demo</module>
+        <module>AlgorithmsStructure</module>
     </modules>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
 </project>
