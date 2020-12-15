@@ -6,6 +6,8 @@
  */
 package org.mindidea.structure.demo06_二叉树;
 
+import java.util.Comparator;
+
 /**
  * 二叉搜索树
  *
@@ -19,6 +21,15 @@ public class BinarySearchTree<E> {
     private int size;
 
     private Node<E> root;
+    private Comparator<E> comparator;
+
+    public BinarySearchTree() {
+        this(null);
+    }
+
+    public BinarySearchTree(Comparator<E> comparator) {
+        this.comparator = comparator;
+    }
 
     public int size() {
         return size;
@@ -72,9 +83,13 @@ public class BinarySearchTree<E> {
 
     }
 
+    @SuppressWarnings("unchecked")
     private int compare(E e1, E e2) {
-
-        return 0;
+        if (comparator != null) {
+            return comparator.compare(e1, e2);
+        }
+        // Comparable 必须可比较
+        return ((Comparable<E>) e1).compareTo(e2);
     }
 
     public void remove(E element) {
