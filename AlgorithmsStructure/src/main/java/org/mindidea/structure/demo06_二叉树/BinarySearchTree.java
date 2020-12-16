@@ -6,7 +6,11 @@
  */
 package org.mindidea.structure.demo06_二叉树;
 
+import org.w3c.dom.NodeList;
+
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.Stack;
 
 /**
  * 二叉搜索树
@@ -79,7 +83,104 @@ public class BinarySearchTree<E> {
         size++;
     }
 
-    private void findPosition(E element) {
+    /**
+     * 前序遍历：root -> left -> right
+     *
+     * @author Tsingyun(青雲)
+     * @createTime 2020/12/15 21:34
+     */
+    public void preorder() {
+        preorder(root);
+    }
+
+    /**
+     * 递归遍历
+     *
+     * @author Tsingyun(青雲)
+     * @createTime 2020/12/16 18:24
+     */
+    private void preorder(Node<E> node) {
+        if (node == null) return;
+        System.out.print(node.element + ", ");
+        preorder(node.left);
+        preorder(node.right);
+    }
+
+    /**
+     * 前序 非递归遍历
+     *
+     * @author Tsingyun(青雲)
+     * @createTime 2020/12/16 18:24
+     */
+    private void preorder2(Node<E> node) {
+        if (node == null) return;
+        Stack<Node<E>> stack = new Stack<>();
+        stack.add(node);
+        while (!stack.isEmpty()) {
+            Node<E> topNode = stack.pop();
+
+            System.out.print(topNode.element + ", ");
+
+            if (topNode.right != null) {
+                stack.add(topNode.right);
+            }
+
+            if (topNode.left != null) {
+                stack.add(topNode.left);
+            }
+        }
+    }
+
+    /**
+     * 中序遍历
+     *
+     * @author Tsingyun(青雲)
+     * @createTime 2020/12/15 21:34
+     */
+    public void inorder() {
+        inorder2(root);
+    }
+
+    private void inorder(Node<E> node) {
+        if (node == null) return;
+        inorder(node.left);
+        System.out.println(node.element);
+        inorder(node.right);
+    }
+
+    private void inorder2(Node<E> node) {
+        Stack<Node<E>> stack = new Stack<>();
+        Node<E> p = node;
+        while (p != null || !stack.isEmpty()) {
+            while (p != null) {
+                stack.add(p);
+                p = p.left;
+            }
+            if (!stack.isEmpty()) {
+                p = stack.pop();
+                System.out.print(p.element + ",");
+                p = p.right;
+            }
+        }
+    }
+
+    /**
+     * 后序遍历
+     *
+     * @author Tsingyun(青雲)
+     * @createTime 2020/12/15 21:34
+     */
+    public void postorder() {
+
+    }
+
+    /**
+     * 层序遍历
+     *
+     * @author Tsingyun(青雲)
+     * @createTime 2020/12/15 21:34
+     */
+    public void levelOrder() {
 
     }
 

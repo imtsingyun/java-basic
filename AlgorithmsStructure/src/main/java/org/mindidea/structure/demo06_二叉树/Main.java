@@ -16,16 +16,20 @@ public class Main {
 
     public static void main(String[] args) {
         BinarySearchTree<Integer> b1 = new BinarySearchTree<>();
-        b1.add(2);
-        b1.add(1);
+        b1.add(5);
         b1.add(3);
-        System.out.println(b1);
-
+        b1.add(6);
+        b1.add(2);
+        b1.add(4);
+        b1.add(7);
+//        b1.preorder();
+        b1.inorder();
+        System.out.println();
         BinarySearchTree<Person> b2 = new BinarySearchTree<>();
         b2.add(new Person(10, "T"));
         b2.add(new Person(19, "M"));
         b2.add(new Person(8, "I"));
-        System.out.println(b2);
+//        b2.preorder();
 
     }
 
@@ -36,6 +40,30 @@ public class Main {
         Person(int age, String name) {
             this.age = age;
             this.name = name;
+        }
+
+        public Integer getAge() {
+            return age;
+        }
+
+        public void setAge(Integer age) {
+            this.age = age;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "Person{" +
+                    "age=" + age +
+                    ", name='" + name + '\'' +
+                    '}';
         }
 
         @Override
