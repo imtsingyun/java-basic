@@ -4,7 +4,7 @@
  * @date 2020/12/15 19:57
  * Copyright (c) 2020 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea.structure.demo06_二叉树;
+package org.mindidea.structure.demo05_二叉树;
 
 import java.util.Comparator;
 import java.util.LinkedList;
