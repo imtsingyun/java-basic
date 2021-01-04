@@ -6,10 +6,9 @@
  */
 package org.mindidea.structure.demo06_二叉树;
 
-import org.w3c.dom.NodeList;
-
 import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -114,6 +113,7 @@ public class BinarySearchTree<E> {
      */
     private void preorder2(Node<E> node) {
         if (node == null) return;
+
         Stack<Node<E>> stack = new Stack<>();
         stack.add(node);
         while (!stack.isEmpty()) {
@@ -152,11 +152,10 @@ public class BinarySearchTree<E> {
         Stack<Node<E>> stack = new Stack<>();
         Node<E> p = node;
         while (p != null || !stack.isEmpty()) {
-            while (p != null) {
+            if (p != null) {
                 stack.add(p);
                 p = p.left;
-            }
-            if (!stack.isEmpty()) {
+            } else {
                 p = stack.pop();
                 System.out.print(p.element + ",");
                 p = p.right;
@@ -171,7 +170,64 @@ public class BinarySearchTree<E> {
      * @createTime 2020/12/15 21:34
      */
     public void postorder() {
+        postorder1(root);
+    }
 
+    private void postorder(Node<E> node) {
+        if (node == null) return;
+        postorder(node.left);
+        postorder(node.right);
+        System.out.println(node.element);
+    }
+
+    private void postorder1(Node<E> node) {
+        if (node == null) {
+            return;
+        }
+        Node<E> prev = null; // 上一次打印的元素
+        Node<E> p = node;
+        Stack<Node<E>> stack = new Stack<>();
+        while (p != null || !stack.isEmpty()) {
+            if (p != null) {
+                stack.add(p);
+                p = p.left;
+            } else {
+                // 先从栈顶取出元素，如果不满足if条件，则再次入桟
+                p = stack.pop();
+                // 如果p的右节点为空，或者==prev，则弹出p，并打印
+                if (p.right == null || p.right == prev) {
+                    System.out.print(p.element + ", ");
+                    prev = p;
+                    p = null;
+                } else {
+                    // 将栈顶的元素重新添加到栈中
+                    stack.add(p);
+                    p = p.right;
+                }
+            }
+        }
+    }
+
+    private void postorder2(Node<E> node) {
+        if (node == null) return;
+        Stack<Node<E>> stack = new Stack<>();
+        Node<E> p = node;
+        Node<E> prev = null;
+        while (p != null || !stack.isEmpty()) {
+            while (p != null) {
+                stack.add(p);
+                p = p.left;
+            }
+            p = stack.pop();
+            if (p.right == null || p.right == prev) {
+                System.out.print(p.element + ", ");
+                prev = p;
+                p = null;
+            } else {
+                stack.add(p);
+                p = p.right;
+            }
+        }
     }
 
     /**
@@ -181,7 +237,133 @@ public class BinarySearchTree<E> {
      * @createTime 2020/12/15 21:34
      */
     public void levelOrder() {
+        levelOrder(root);
+    }
 
+    private void levelOrder(Node<E> node) {
+        if (node == null) return;
+        Queue<Node<E>> queue = new LinkedList<>();
+        queue.offer(node);
+        while (!queue.isEmpty()) {
+            Node<E> poll = queue.poll();
+            System.out.println(poll.element);
+            if (poll.left != null) {
+                queue.offer(poll.left);
+            }
+            if (poll.right != null) {
+                queue.offer(poll.right);
+            }
+        }
+    }
+
+    public int height() {
+        return height2(root);
+    }
+
+    private int height1(Node<E> node) {
+        if (node == null) {
+            return 0;
+        }
+        return 1 + Math.max(height1(node.left), height1(node.right));
+    }
+
+    private int height2(Node<E> node) {
+        if (node == null) return 0;
+        int height = 0;
+        // 每 一层元素个数
+        int levelSize = 1;
+
+        Queue<Node<E>> queue = new LinkedList<>();
+        queue.offer(node);
+        while (!queue.isEmpty()) {
+            Node<E> poll = queue.poll();
+            levelSize--;
+            if (poll.left != null) {
+                queue.offer(poll.left);
+            }
+            if (poll.right != null) {
+                queue.offer(poll.right);
+            }
+            // 即将访问下一层
+            if (levelSize == 0) {
+                levelSize = queue.size();
+                height++;
+            }
+        }
+        return height;
+    }
+
+    // 翻转二叉树
+    public void invertTree() {
+        invertTree(root);
+    }
+
+    private void invertTree(Node<E> node) {
+        if (node == null) return;
+
+        Stack<Node<E>> stack = new Stack<>();
+        stack.push(node);
+        while (!stack.isEmpty()) {
+            Node<E> pop = stack.pop();
+            Node<E> temp = pop.left;
+            pop.left = pop.right;
+            pop.right = temp;
+            if (pop.right != null) {
+                stack.push(pop.right);
+            }
+            if (pop.left != null) {
+                stack.push(pop.left);
+            }
+        }
+    }
+
+    public void printTree() {
+        printTree(root);
+    }
+
+    private void printTree(Node<E> node) {
+        if (node == null) return;
+        int levelSize = 1;
+        Queue<Node<E>> queue = new LinkedList<>();
+        queue.offer(node);
+
+        while (!queue.isEmpty()) {
+            Node<E> poll = queue.poll();
+            levelSize--;
+            System.out.print(poll.element + ", ");
+            if (poll.left != null) {
+                queue.offer(poll.left);
+            }
+            if (poll.right != null) {
+                queue.offer(poll.right);
+            }
+            // 即将访问下一层
+            if (levelSize == 0) {
+                levelSize = queue.size();
+                System.out.println();
+            }
+        }
+    }
+
+    /**
+     * 前驱节点
+     *
+     * @author Tsingyun(青雲)
+     * @createTime 2020/12/19 14:36
+     */
+    public Node<E> predecessor(Node<E> node) {
+        // predecessorNode = node.left.right.right.right...
+        if (node == null) {
+            return null;
+        }
+        if (node.left != null) {
+            Node<E> p = node.left;
+            while (p.right != null) {
+                p = p.right;
+            }
+            return p;
+        }
+        return null;
     }
 
     @SuppressWarnings("unchecked")
