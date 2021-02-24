@@ -6,6 +6,8 @@
  */
 package org.mindidea._02_algorithms.alg02_Selection;
 
+import org.mindidea.common.Integers;
+
 /**
  * 选择排序：每次选择最大的元素和最后一个元素交换位置
  *
@@ -16,26 +18,15 @@ package org.mindidea._02_algorithms.alg02_Selection;
  */
 public class Main {
     public static void main(String[] args) {
-        int[] arr = {56, 9, 19, 28, 37, 2, 10, 34};
-
-        sort1(arr);
-    }
-
-    private static void sort1(int[] arr) {
-        for (int end = arr.length - 1; end > 0; end--) {
-            int maxIndex = 0;
-            for (int begin = 1; begin <= end; begin++) {
-                if (arr[begin] >= arr[maxIndex]) {
-                    maxIndex = begin;
-                }
-            }
-            int tmp = arr[maxIndex];
-            arr[maxIndex] = arr[end];
-            arr[end] = tmp;
+        Integer[] arr = Integers.random(10, 0, 100);
+        for (int j : arr) {
+            System.out.print(j + ", ");
         }
-
+        System.out.println("\n--------------------------------------");
+        arr = SelectionSort04.sort(arr);
         for (int j : arr) {
             System.out.print(j + ", ");
         }
     }
+
 }
