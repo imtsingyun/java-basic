@@ -18,7 +18,9 @@ public class SelectionSort01 {
         for (int end = arr.length - 1; end > 0; end--) {
             int maxIndex = 0;
             for (int begin = 1; begin <= end; begin++) {
-                if (arr[begin] > arr[maxIndex]) {
+                // >= 能保证算法的稳定性
+                // 10 10 3 9
+                if (arr[begin] >= arr[maxIndex]) {
                     maxIndex = begin;
                 }
             }
