@@ -4,7 +4,7 @@
  * @date 2020/12/19 14:17
  * Copyright (c) 2020 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea.leetcode;
+package org.mindidea._04_leetcode;
 
 import java.util.Stack;
 

@@ -4,7 +4,7 @@
  * @date 2020/12/15 20:47
  * Copyright (c) 2020 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea.structure.demo05_二叉树;
+package org.mindidea._03_structure.demo05_0_二叉树;
 
 /**
  * @author Tsingyun(青雲)
