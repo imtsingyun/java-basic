@@ -4,7 +4,7 @@
  * @date 2021/1/4 21:40
  * Copyright (c) 2021 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea._02_algorithms.alg01_BubbleSort;
+package org.mindidea._02_algorithms._01_BubbleSort;
 
 import org.mindidea.common.Integers;
 

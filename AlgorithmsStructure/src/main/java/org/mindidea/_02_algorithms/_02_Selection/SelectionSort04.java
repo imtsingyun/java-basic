@@ -1,19 +1,19 @@
 /*
- * @class SelectionSort03
+ * @class SelectionSor04
  * @package org.mindidea._02_algorithms.alg02_Selection
- * @date 2021年2月24日 22:13
+ * @date 2021年2月24日 22:17
  * Copyright (c) 2021 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea._02_algorithms.alg02_Selection;
+package org.mindidea._02_algorithms._02_Selection;
 
 /**
  * @author Tsingyun(青雲)
  * @version V1.0
- * @createTime 2021年2月24日 22:13
+ * @createTime 2021年2月24日 22:17
  * @blog https://mindidea.org
  */
 @SuppressWarnings("all")
-public class SelectionSort03 {
+public class SelectionSort04 {
     public static Integer[] sort(Integer[] arr) {
         for (int end = arr.length - 1; end > 0; end--) {
             int maxIndex = 0;

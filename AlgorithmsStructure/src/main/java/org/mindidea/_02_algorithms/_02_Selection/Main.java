@@ -4,7 +4,7 @@
  * @date 2021/1/17 22:37
  * Copyright (c) 2021 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea._02_algorithms.alg02_Selection;
+package org.mindidea._02_algorithms._02_Selection;
 
 import org.mindidea.common.Integers;
 
