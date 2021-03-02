@@ -23,4 +23,8 @@ public class Integers {
         }
         return array;
     }
+
+    public void isSort(Integer[] nums) {
+
+    }
 }

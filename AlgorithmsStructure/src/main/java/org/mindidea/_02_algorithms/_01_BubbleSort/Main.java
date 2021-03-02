@@ -19,7 +19,11 @@ public class Main {
 
     public static void main(String[] args) {
         Integer[] arr = Integers.random(10, 0, 100);
-        arr = BubbleSort04.sort(arr);
+        for (int j : arr) {
+            System.out.print(j + ", ");
+        }
+        System.out.println("\n========================");
+        BubbleSort07.sort(arr);
         for (int j : arr) {
             System.out.print(j + ", ");
         }

@@ -23,7 +23,7 @@ public class Main {
             System.out.print(j + ", ");
         }
         System.out.println("\n--------------------------------------");
-        arr = SelectionSort04.sort(arr);
+        SelectionSort05.sort(arr);
         for (int j : arr) {
             System.out.print(j + ", ");
         }
