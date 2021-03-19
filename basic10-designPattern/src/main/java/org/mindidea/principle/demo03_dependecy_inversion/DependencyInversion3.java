@@ -22,15 +22,15 @@ public class DependencyInversion3 {
 
 class Driver implements IDriver {
     // 1。构造器注入依赖
-    private ICar car;
-    public Driver(ICar car) {
-        this.car = car;
-    }
-    
+//    private ICar car;
+//    public Driver(ICar car) {
+//        this.car = car;
+//    }
+//
     // 2。Setter注入依赖
-    public void setCar(ICar car) {
-        this.car = car;
-    }
+//    public void setCar(ICar car) {
+//        this.car = car;
+//    }
 
     // 3。接口声明式的依赖注入
     @Override
