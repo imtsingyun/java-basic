@@ -4,7 +4,7 @@
  * @date 2021年3月20日 16:07
  * Copyright (c) 2021 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea.design.singleton.test4;
+package org.mindidea.design.d1singleton.test4;
 
 /**
  * 懒汉式：线程安全

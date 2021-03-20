@@ -4,7 +4,7 @@
  * @date 2021年3月20日 11:21
  * Copyright (c) 2021 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea.design.singleton.test1;
+package org.mindidea.design.d1singleton.test1;
 
 /**
  * 饿汉式：静态常量，直接创建

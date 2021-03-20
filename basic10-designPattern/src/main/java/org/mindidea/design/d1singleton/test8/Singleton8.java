@@ -4,7 +4,7 @@
  * @date 2021年3月20日 17:14
  * Copyright (c) 2021 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea.design.singleton.test8;
+package org.mindidea.design.d1singleton.test8;
 
 /**
  * @author Tsingyun(青雲)
@@ -15,7 +15,7 @@ package org.mindidea.design.singleton.test8;
 public class Singleton8 {
     public static void main(String[] args) {
         Singleton instance = Singleton.INSTANCE;
-        
+
     }
 }
 

@@ -4,7 +4,7 @@
  * @date 2021年3月20日 16:37
  * Copyright (c) 2021 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea.design.singleton.test7;
+package org.mindidea.design.d1singleton.test7;
 
 /**
  * 静态内部类
