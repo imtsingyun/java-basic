@@ -1,15 +1,15 @@
 /*
  * @class CouponCommodityService
- * @package org.mindidea.design_01_FactoryMethod.fm01.store.impl
+ * @package org.mindidea.demo.design_01_FactoryMethod.fm01.store.impl
  * @date 2021年2月25日 23:18
  * Copyright (c) 2021 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea.design_01_FactoryMethod.fm01.store.impl;
+package org.mindidea.demo.design_01_FactoryMethod.fm01.store.impl;
 
 import com.alibaba.fastjson.JSON;
-import org.mindidea.design_01_FactoryMethod.fm00.coupon.CouponResult;
-import org.mindidea.design_01_FactoryMethod.fm00.coupon.CouponService;
-import org.mindidea.design_01_FactoryMethod.fm01.store.ICommodity;
+import org.mindidea.demo.design_01_FactoryMethod.fm00.coupon.CouponResult;
+import org.mindidea.demo.design_01_FactoryMethod.fm00.coupon.CouponService;
+import org.mindidea.demo.design_01_FactoryMethod.fm01.store.ICommodity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,10 +1,10 @@
 /*
  * @class StoreFactory
- * @package org.mindidea.design_01_FactoryMethod.fm01
+ * @package org.mindidea.demo.design_01_FactoryMethod.fm01
  * @date 2021年2月25日 23:17
  * Copyright (c) 2021 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea.design_01_FactoryMethod.fm01;
+package org.mindidea.demo.design_01_FactoryMethod.fm01;
 
 /**
  * @author Tsingyun(青雲)

@@ -1,10 +1,10 @@
 /*
  * @class IQiYiCardService
- * @package org.mindidea.design_01_FactoryMethod.d00.card
+ * @package org.mindidea.demo.design_01_FactoryMethod.d00.card
  * @date 2021年2月25日 22:44
  * Copyright (c) 2021 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea.design_01_FactoryMethod.fm00.card;
+package org.mindidea.demo.design_01_FactoryMethod.fm00.card;
 
 /**
  * 模拟爱奇艺会员卡服务
