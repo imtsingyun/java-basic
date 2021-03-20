@@ -7,7 +7,7 @@
 package org.mindidea.design.singleton.test1;
 
 /**
- * 饿汉式：静态常量
+ * 饿汉式：静态常量，直接创建
  *
  * @author Tsingyun(青雲)
  * @version V1.0
