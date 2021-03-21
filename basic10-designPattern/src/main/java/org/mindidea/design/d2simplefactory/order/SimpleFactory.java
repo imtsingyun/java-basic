@@ -8,6 +8,10 @@ public class SimpleFactory {
 
     // 根据 pizzaType 返回一个 Pizza 对象
     public Pizza createPizza(String pizzaType) {
+        return createPizza2(pizzaType);
+    }
+
+    public static Pizza createPizza2(String pizzaType) {
         System.out.println("使用简单工厂模式");
         Pizza pizza = null;
         switch (pizzaType) {
