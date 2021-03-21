@@ -1,7 +1,7 @@
-package org.mindidea.design.d2simplefactory.order;
+package org.mindidea.design.d2simpleFactory.order;
 
 
-import org.mindidea.design.d2simplefactory.pizzastore.*;
+import org.mindidea.design.d2simpleFactory.pizzastore.*;
 
 // 简单工厂类
 public class SimpleFactory {

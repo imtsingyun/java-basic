@@ -1,4 +1,4 @@
-package org.mindidea.design.d2simplefactory.pizzastore;
+package org.mindidea.design.d2simpleFactory.pizzastore;
 
 public class PepperPizza extends Pizza {
 

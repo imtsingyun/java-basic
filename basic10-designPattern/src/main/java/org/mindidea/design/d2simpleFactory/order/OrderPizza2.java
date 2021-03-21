@@ -4,11 +4,9 @@
  * @date 2021年3月20日 21:29
  * Copyright (c) 2021 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea.design.d2simplefactory.order;
+package org.mindidea.design.d2simpleFactory.order;
 
-import org.mindidea.design.d2simplefactory.pizzastore.CheesePizza;
-import org.mindidea.design.d2simplefactory.pizzastore.GreekPizza;
-import org.mindidea.design.d2simplefactory.pizzastore.Pizza;
+import org.mindidea.design.d2simpleFactory.pizzastore.Pizza;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,21 +18,15 @@ import java.io.InputStreamReader;
  * @createTime 2021年3月20日 21:29
  * @blog https://mindidea.org
  */
-public class OrderPizza {
+public class OrderPizza2 {
 
-    SimpleFactory simpleFactory;
     Pizza pizza = null;
 
-    public OrderPizza(SimpleFactory factory) {
-        setFactory(factory);
-    }
-
-    public void setFactory(SimpleFactory simpleFactory) {
+    public OrderPizza2() {
         String pizzaType = "";
-        this.simpleFactory = simpleFactory;
         do {
             pizzaType = getType();
-            pizza = this.simpleFactory.createPizza(pizzaType);
+            pizza = SimpleFactory.createPizza2(pizzaType);
 
             if (pizza != null) {
                 pizza.prepare();

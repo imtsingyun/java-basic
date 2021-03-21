@@ -4,7 +4,7 @@
  * @date 2021年3月20日 17:35
  * Copyright (c) 2021 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea.design.d2simplefactory.pizzastore;
+package org.mindidea.design.d2simpleFactory.pizzastore;
 
 /**
  * 简单工厂

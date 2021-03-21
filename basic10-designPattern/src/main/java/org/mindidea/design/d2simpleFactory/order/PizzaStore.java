@@ -1,4 +1,4 @@
-package org.mindidea.design.d2simplefactory.order;
+package org.mindidea.design.d2simpleFactory.order;
 
 public class PizzaStore {
 
