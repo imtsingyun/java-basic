@@ -13,6 +13,11 @@ package org.mindidea.design.d2simplefactory.pizzastore;
  * @blog https://mindidea.org
  */
 public class CheesePizza extends Pizza {
+
+    public CheesePizza(String name) {
+        this.name = name;
+    }
+
     @Override
     public void prepare() {
         System.out.println("准备奶酪披萨原材料");

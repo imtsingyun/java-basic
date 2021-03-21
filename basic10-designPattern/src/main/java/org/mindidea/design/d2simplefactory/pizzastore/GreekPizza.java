@@ -13,6 +13,11 @@ package org.mindidea.design.d2simplefactory.pizzastore;
  * @blog https://mindidea.org
  */
 public class GreekPizza extends Pizza {
+
+    public GreekPizza(String name) {
+        this.name = name;
+    }
+
     @Override
     public void prepare() {
         System.out.println("准备希腊披萨原材料");

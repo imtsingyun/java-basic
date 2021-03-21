@@ -22,15 +22,28 @@ import java.io.InputStreamReader;
  */
 public class OrderPizza {
 
-    public OrderPizza() {
-        Pizza pizza = null;
-        String orderType;
+    SimpleFactory simpleFactory;
+    Pizza pizza = null;
+
+    public OrderPizza(SimpleFactory factory) {
+        setFactory(factory);
+    }
+
+    public void setFactory(SimpleFactory simpleFactory) {
+        String pizzaType = "";
+        this.simpleFactory = simpleFactory;
         do {
-            orderType = getType();
-            if ("greek".equals(orderType)) {
-                pizza = new GreekPizza();
-            } else if ("cheese".equals(orderType)) {
-                pizza = new CheesePizza();
+            pizzaType = getType();
+            pizza = this.simpleFactory.createPizza(pizzaType);
+
+            if (pizza != null) {
+                pizza.prepare();
+                pizza.bake();
+                pizza.cut();
+                pizza.box();
+            } else {
+                System.out.println("订购披萨失败");
+                break;
             }
         } while (true);
     }
@@ -39,8 +52,7 @@ public class OrderPizza {
         try {
             BufferedReader strin = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("input pizza type:");
-            String str = strin.readLine();
-            return str;
+            return strin.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
