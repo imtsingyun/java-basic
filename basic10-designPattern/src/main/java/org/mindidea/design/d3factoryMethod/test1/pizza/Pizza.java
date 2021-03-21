@@ -1,4 +1,4 @@
-package org.mindidea.design.d3factoryMethod.test1.pizzaStore;
+package org.mindidea.design.d3factoryMethod.test1.pizza;
 
 public abstract class Pizza {
     protected String name;

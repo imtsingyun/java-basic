@@ -1,4 +1,4 @@
-package org.mindidea.design.d3factoryMethod.test1.pizzaStore;
+package org.mindidea.design.d4abstractFactory.pizza;
 
 public class BJCheesePizza extends Pizza {
     @Override

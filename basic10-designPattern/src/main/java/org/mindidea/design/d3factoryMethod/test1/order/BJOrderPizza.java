@@ -1,9 +1,9 @@
 package org.mindidea.design.d3factoryMethod.test1.order;
 
 
-import org.mindidea.design.d3factoryMethod.test1.pizzaStore.BJCheesePizza;
-import org.mindidea.design.d3factoryMethod.test1.pizzaStore.BJPepperPizza;
-import org.mindidea.design.d3factoryMethod.test1.pizzaStore.Pizza;
+import org.mindidea.design.d3factoryMethod.test1.pizza.BJCheesePizza;
+import org.mindidea.design.d3factoryMethod.test1.pizza.BJPepperPizza;
+import org.mindidea.design.d3factoryMethod.test1.pizza.Pizza;
 
 public class BJOrderPizza extends OrderPizza {
 

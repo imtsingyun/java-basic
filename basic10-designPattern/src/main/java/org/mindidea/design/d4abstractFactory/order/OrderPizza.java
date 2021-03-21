@@ -1,38 +1,22 @@
-/*
- * @class OrderPizza
- * @package org.mindidea.design.d2simplefactory.order
- * @date 2021年3月20日 21:29
- * Copyright (c) 2021 MindIdea.org, All Rights Reserved.
- */
-package org.mindidea.design.d2simpleFactory.order;
+package org.mindidea.design.d4abstractFactory.order;
 
-import org.mindidea.design.d2simpleFactory.pizzastore.Pizza;
+import org.mindidea.design.d4abstractFactory.pizza.Pizza;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- * @author Tsingyun(青雲)
- * @version V1.0
- * @createTime 2021年3月20日 21:29
- * @blog https://mindidea.org
- */
 public class OrderPizza {
 
-    SimpleFactory simpleFactory;
-    Pizza pizza = null;
+    AbstractFactory abstractFactory;
 
-    public OrderPizza(SimpleFactory factory) {
-        setFactory(factory);
-    }
-
-    public void setFactory(SimpleFactory simpleFactory) {
-        String pizzaType = "";
-        this.simpleFactory = simpleFactory;
+    public OrderPizza(AbstractFactory abstractFactory) {
+        this.abstractFactory = abstractFactory;
+        Pizza pizza;
+        String pizzaType;
         do {
             pizzaType = getType();
-            pizza = this.simpleFactory.createPizza(pizzaType);
+            pizza = this.abstractFactory.createPizza(pizzaType);
             if (pizza != null) {
                 pizza.prepare();
                 pizza.bake();
@@ -45,6 +29,11 @@ public class OrderPizza {
         } while (true);
     }
 
+    /**
+     * 根据用户的输入获取披萨的类型
+     *
+     * @return PizzaType
+     */
     private String getType() {
         try {
             BufferedReader strIn = new BufferedReader(new InputStreamReader(System.in));

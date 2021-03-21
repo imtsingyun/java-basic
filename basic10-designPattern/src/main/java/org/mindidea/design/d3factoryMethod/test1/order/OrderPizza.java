@@ -6,7 +6,7 @@
  */
 package org.mindidea.design.d3factoryMethod.test1.order;
 
-import org.mindidea.design.d3factoryMethod.test1.pizzaStore.Pizza;
+import org.mindidea.design.d3factoryMethod.test1.pizza.Pizza;
 
 import java.io.BufferedReader;
 import java.io.IOException;

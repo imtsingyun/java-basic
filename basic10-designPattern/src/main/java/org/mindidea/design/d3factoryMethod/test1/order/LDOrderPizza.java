@@ -1,7 +1,7 @@
 package org.mindidea.design.d3factoryMethod.test1.order;
 
 
-import org.mindidea.design.d3factoryMethod.test1.pizzaStore.*;
+import org.mindidea.design.d3factoryMethod.test1.pizza.*;
 
 public class LDOrderPizza extends OrderPizza {
 
