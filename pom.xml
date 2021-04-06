@@ -20,6 +20,7 @@
         <module>AlgorithmsStructure</module>
         <module>netty-demo</module>
         <module>basic11-iostream</module>
+        <module>leetcode</module>
     </modules>
 
     <properties>
