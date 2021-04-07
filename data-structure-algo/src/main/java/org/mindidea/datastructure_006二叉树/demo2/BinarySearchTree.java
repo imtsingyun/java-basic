@@ -6,6 +6,8 @@
  */
 package org.mindidea.datastructure_006二叉树.demo2;
 
+import javafx.scene.Parent;
+
 /**
  * @author Tsingyun(青雲)
  * @version V1.0
@@ -15,6 +17,7 @@ package org.mindidea.datastructure_006二叉树.demo2;
 public class BinarySearchTree<E> {
 
     private int size;
+
     private Node<E> root;
 
     public int size() {
@@ -39,26 +42,39 @@ public class BinarySearchTree<E> {
      */
     public void add(E element) {
         elementNotNullCheck(element);
-        // 添加第一个节点（根节点）
+        // 添加第一个节点
         if (root == null) {
             root = new Node<>(element, null);
             size++;
             return;
         }
-        // 添加其他节点
-        // 找到父节点
+        // 添加不是第一个节点
+        // 1. 找到父节点
+        // 2. 创建新节点
+        // 3. parent.left = node 或 parent.right = node
+        findPosition(element);
+    }
+
+    /**
+     * 查找插入元素的位置
+     * @param element 要插入的新元素
+     */
+    @SuppressWarnings("Duplicates")
+    private void findPosition(E element) {
         Node<E> node = root;
-        Node<E> parent = node;
+        Node<E> parent = root;
         int compare = 0;
         while (node != null) {
-            parent = node;
             compare = compare(element, node.element);
+            // 记录父节点
+            parent = node;
+            // 新元素大于node节点
             if (compare > 0) {
                 node = node.right;
             } else if (compare < 0) {
                 node = node.left;
             } else {
-                // TODO: 相等
+                // 相等 TODO: 暂时不处理相等的元素
                 return;
             }
         }
@@ -66,6 +82,7 @@ public class BinarySearchTree<E> {
         if (compare > 0) {
             parent.right = newNode;
         } else {
+            assert parent != null;
             parent.left = newNode;
         }
         size++;
@@ -76,7 +93,6 @@ public class BinarySearchTree<E> {
     }
 
     public boolean contains(E element) {
-
         return false;
     }
 
@@ -143,7 +159,6 @@ public class BinarySearchTree<E> {
     public int getTreeDepth(Node<E> root) {
         return root == null ? 0 : (1 + Math.max(getTreeDepth(root.left), getTreeDepth(root.right)));
     }
-
 
     private void writeArray(Node<E> currNode, int rowIndex, int columnIndex, String[][] res, int treeDepth) {
         // 保证输入的树不为空

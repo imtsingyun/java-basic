@@ -15,12 +15,12 @@
         <module>basic03-currency</module>
         <module>basic04-currency</module>
         <module>basic10-designPattern</module>
-        <module>basic99-ConcurrentyInPractice</module>
-        <module>zookeeper-demo</module>
-        <module>AlgorithmsStructure</module>
-        <module>netty-demo</module>
         <module>basic11-iostream</module>
+        <module>basic99-ConcurrentyInPractice</module>
+        <module>data-structure-algo</module>
         <module>leetcode</module>
+        <module>netty-demo</module>
+        <module>zookeeper-demo</module>
     </modules>
 
     <properties>
