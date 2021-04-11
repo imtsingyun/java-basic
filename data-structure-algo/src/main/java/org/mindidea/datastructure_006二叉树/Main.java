@@ -25,7 +25,7 @@ public class Main {
         for (Integer integer : arr) {
             bst.add(integer);
         }
-        BinaryTrees.println(bst);
+//        BinaryTrees.println(bst);
 
         System.out.println("=========================================================");
         bst.levelOrderTraversal(new BinarySearchTree1.Visitor<Integer>() {
@@ -38,19 +38,21 @@ public class Main {
         System.out.println();
         System.out.println("=========================================================");
 
+
+
         BinarySearchTree1<Student> bst2 = new BinarySearchTree1<>();
         bst2.add(new Student(15, 100, "tim2"));
         bst2.add(new Student(11, 99, "tim3"));
         bst2.add(new Student(12, 109, "tim1"));
-        BinaryTrees.println(bst2);
-        System.out.println("=========================================================");
+//        BinaryTrees.println(bst2);
+//        System.out.println("=========================================================");
 
         BinarySearchTree1<Student> bst3 =
                 new BinarySearchTree1<>(Comparator.comparingInt(o -> o.age));
         bst3.add(new Student(15, 100, "tim2"));
         bst3.add(new Student(11, 99, "tim3"));
         bst3.add(new Student(12, 109, "tim1"));
-        BinaryTrees.println(bst3);
+//        BinaryTrees.println(bst3);
     }
 
     private static class Student implements Comparable<Student> {

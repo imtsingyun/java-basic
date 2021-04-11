@@ -242,6 +242,56 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
     }
     //</editor-fold>
 
+    //<editor-fold desc="前驱节点">
+    /**
+     * 前驱节点: node 的左子树最靠右的节点
+     * 获取 node 的前驱节点
+     * @param node node
+     * @return 前驱节点
+     */
+    private Node<E> precursor(Node<E> node) {
+        if (node == null) {
+            return null;
+        }
+        Node<E> p = node.left;
+        // 左子树不为空 left.right.right....
+        if (p != null) {
+            while (p.right != null) {
+                p = p.right;
+            }
+            return p;
+        }
+        // 右子树为空 parent.parent.parent
+        while (node.parent != null && node == node.parent.left) {
+            node = node.parent;
+        }
+        // node.parent == null
+        // node == node.parent.right
+
+        return node.parent;
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="后继节点">
+    private Node<E> successor(Node<E> node) {
+        if (node == null) {
+            return null;
+        }
+        Node<E> p = node.right;
+        if (p != null) {
+            while (p.left != null) {
+                p = p.left;
+            }
+            return p;
+        }
+
+        while (node.parent != null && node == node.parent.right) {
+            node = node.parent;
+        }
+        return node.parent;
+    }
+    //</editor-fold>
+
     //<editor-fold desc="元素比较">
     /**
      * 元素比较逻辑
