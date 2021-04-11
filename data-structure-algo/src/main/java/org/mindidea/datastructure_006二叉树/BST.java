@@ -40,7 +40,6 @@ public class BST<E> extends BinaryTree<E> {
     //</editor-fold>
 
     //<editor-fold desc="接口：添加元素">
-
     /**
      * 添加元素
      *
@@ -118,7 +117,7 @@ public class BST<E> extends BinaryTree<E> {
     }
     //</editor-fold>
 
-    //<editor-fold desc="删除元素">
+    //<editor-fold desc="接口：删除元素">
     public void remove(E element) {
         remove(getNode(element));
     }
