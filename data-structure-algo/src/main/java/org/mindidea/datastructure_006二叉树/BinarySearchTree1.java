@@ -4,9 +4,13 @@
  * @date 2021/1/23 18:03
  * Copyright (c) 2021 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea.datastructure_006二叉树.demo2;
+package org.mindidea.datastructure_006二叉树;
+
+import org.mindidea.utils.printer.BinaryTreeInfo;
 
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author Tsingyun(青雲)
@@ -15,20 +19,25 @@ import java.util.Comparator;
  * @blog https://mindidea.org
  */
 @SuppressWarnings(value = {"unused"})
-public class BinarySearchTree<E> {
+public class BinarySearchTree1<E> implements BinaryTreeInfo {
 
+    //<editor-fold desc="成员变量">
     private int size;
     private Node<E> root;
-    private Comparator<E> comparator;
+    private final Comparator<E> comparator;
+    //</editor-fold>
 
-    public BinarySearchTree() {
+    //<editor-fold desc="构造器">
+    public BinarySearchTree1() {
         this(null);
     }
 
-    public BinarySearchTree(Comparator<E> comparator) {
+    public BinarySearchTree1(Comparator<E> comparator) {
         this.comparator = comparator;
     }
+    //</editor-fold>
 
+    //<editor-fold desc="接口：获取树的大小, 是否为空, 清空, 判断是否包含元素">
     public int size() {
         return size;
     }
@@ -41,6 +50,12 @@ public class BinarySearchTree<E> {
 
     }
 
+    public boolean contains(E element) {
+        return false;
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="接口：添加元素">
     /**
      * 添加元素
      *
@@ -75,7 +90,8 @@ public class BinarySearchTree<E> {
             } else if (compare < 0) {
                 node = node.left;
             } else {
-                // 相等 TODO: 暂时不处理相等的元素
+                // 相等时替换元素，考虑自定义对象
+                node.element = element;
                 return;
             }
         }
@@ -115,25 +131,96 @@ public class BinarySearchTree<E> {
             parent.left = newNode;
         size++;
     }
+    //</editor-fold>
 
-    /**
-     * 查找插入元素的位置
-     *
-     * @param element 要插入的新元素
-     */
-    @SuppressWarnings("Duplicates")
-    private void findPosition(E element) {
-
-    }
-
+    //<editor-fold desc="删除元素">
     public void remove(E element) {
 
     }
+    //</editor-fold>
 
-    public boolean contains(E element) {
-        return false;
+    //<editor-fold desc="前序遍历">
+    public void preorderTraversal() {
+        preorderTraversal(root);
+    }
+    /**
+     * 递归前序遍历
+     * @param node 节点
+     */
+    private void preorderTraversal(Node<E> node) {
+        if (node == null) {
+            return;
+        }
+        System.out.println(node.element);
+        preorderTraversal(node.left);
+        preorderTraversal(node.right);
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="中序遍历">
+    public void inorderTraversal() {
+        inorderTraversal(root);
     }
 
+    /**
+     * 中序遍历
+     * @param node 节点
+     */
+    private void inorderTraversal(Node<E> node) {
+        if (node == null) {
+            return;
+        }
+        inorderTraversal(node.left);
+        System.out.println(node.element);
+        inorderTraversal(node.right);
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="后序遍历">
+    public void postorderTraversal() {
+        postorderTraversal(root);
+    }
+
+    /**
+     * 后序遍历
+     * @param node 节点
+     */
+    private void postorderTraversal(Node<E> node) {
+        if (node == null) {
+            return;
+        }
+        postorderTraversal(node.left);
+        postorderTraversal(node.right);
+        System.out.println(node.element);
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="层序遍历">
+    /**
+     * 层序遍历
+     */
+    public void levelOrderTraversal() {
+        if (root == null) return;
+
+        Queue<Node<E>> queue = new LinkedList<>();
+        // 根节点先入队
+        queue.offer(root);
+        // 遍历 queue
+        while (!queue.isEmpty()) {
+            // 取出队列头元素
+            Node<E> node = queue.poll();
+            System.out.println(node.element);
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
+        }
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="元素比较">
     /**
      * 元素比较逻辑
      *
@@ -151,19 +238,61 @@ public class BinarySearchTree<E> {
         // 使用 Java 自带比较器
         return ((Comparable<E>) e1).compareTo(e2);
     }
+    //</editor-fold>
 
+    //<editor-fold desc="元素非空检查">
     private void elementNotNullCheck(E element) {
         if (element == null) {
             throw new IllegalArgumentException("element must not be null");
         }
     }
+    //</editor-fold>
 
+    //<editor-fold desc="打印元素">
+    @Override
+    public Object root() {
+        return root;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public Object left(Object node) {
+        return ((Node<E>)node).left;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public Object right(Object node) {
+        return ((Node<E>)node).right;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public Object string(Object node) {
+        return ((Node<E>)node).element;
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="元素节点定义">
+    public static class Node<E> {
+        E element;
+        Node<E> left;
+        Node<E> right;
+        Node<E> parent;
+
+        public Node(E element, Node<E> parent) {
+            this.element = element;
+            this.parent = parent;
+        }
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="打印">
     public void show() {
         show(root);
     }
-
     private void show(Node<E> root) {
-        if (root == null) System.out.println("EMPTY!");
+        if (root == null) throw new NullPointerException("The tree is empty!");
         // 得到树的深度
         int treeDepth = getTreeDepth(root);
 
@@ -196,11 +325,9 @@ public class BinarySearchTree<E> {
             System.out.println(sb);
         }
     }
-
     public int getTreeDepth(Node<E> root) {
         return root == null ? 0 : (1 + Math.max(getTreeDepth(root.left), getTreeDepth(root.right)));
     }
-
     private void writeArray(Node<E> currNode, int rowIndex, int columnIndex, String[][] res, int treeDepth) {
         // 保证输入的树不为空
         if (currNode == null) return;
@@ -226,16 +353,5 @@ public class BinarySearchTree<E> {
             writeArray(currNode.right, rowIndex + 2, columnIndex + gap * 2, res, treeDepth);
         }
     }
-
-    public static class Node<E> {
-        E element;
-        Node<E> left;
-        Node<E> right;
-        Node<E> parent;
-
-        public Node(E element, Node<E> parent) {
-            this.element = element;
-            this.parent = parent;
-        }
-    }
+    //</editor-fold>
 }

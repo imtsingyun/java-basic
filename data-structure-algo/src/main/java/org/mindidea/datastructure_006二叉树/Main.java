@@ -4,7 +4,9 @@
  * @date 2021/1/23 21:48
  * Copyright (c) 2021 MindIdea.org, All Rights Reserved.
  */
-package org.mindidea.datastructure_006二叉树.demo2;
+package org.mindidea.datastructure_006二叉树;
+
+import org.mindidea.utils.printer.BinaryTrees;
 
 import java.util.Comparator;
 
@@ -19,23 +21,26 @@ public class Main {
         Integer[] arr = new Integer[]{
                 7, 4, 9, 2, 5, 8, 11, 3
         };
-        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        BinarySearchTree1<Integer> bst = new BinarySearchTree1<>();
         for (Integer integer : arr) {
             bst.add(integer);
         }
-        bst.show();
+        BinaryTrees.println(bst);
+        System.out.println("=========================================================");
 
-        BinarySearchTree<Student> bst2 = new BinarySearchTree<>();
+        BinarySearchTree1<Student> bst2 = new BinarySearchTree1<>();
         bst2.add(new Student(15, 100, "tim2"));
         bst2.add(new Student(11, 99, "tim3"));
         bst2.add(new Student(12, 109, "tim1"));
-        bst2.show();
+        BinaryTrees.println(bst2);
+        System.out.println("=========================================================");
 
-        BinarySearchTree<Student> bst3 = new BinarySearchTree<>(Comparator.comparingInt(o -> o.age));
+        BinarySearchTree1<Student> bst3 =
+                new BinarySearchTree1<>(Comparator.comparingInt(o -> o.age));
         bst3.add(new Student(15, 100, "tim2"));
         bst3.add(new Student(11, 99, "tim3"));
         bst3.add(new Student(12, 109, "tim1"));
-        bst3.show();
+        BinaryTrees.println(bst3);
     }
 
     private static class Student implements Comparable<Student> {
@@ -56,7 +61,7 @@ public class Main {
 
         @Override
         public String toString() {
-            return  name + ":" + age + ":" + score;
+            return name + ":" + age + ":" + score;
         }
     }
 }
