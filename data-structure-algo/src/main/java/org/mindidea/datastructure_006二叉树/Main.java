@@ -26,6 +26,16 @@ public class Main {
             bst.add(integer);
         }
         BinaryTrees.println(bst);
+
+        System.out.println("=========================================================");
+        bst.levelOrderTraversal(new BinarySearchTree1.Visitor<Integer>() {
+            @Override
+            boolean visit(Integer element) {
+                System.out.print("-" + element);
+                return element == 8;
+            }
+        });
+        System.out.println();
         System.out.println("=========================================================");
 
         BinarySearchTree1<Student> bst2 = new BinarySearchTree1<>();

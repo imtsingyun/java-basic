@@ -37,19 +37,25 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
     }
     //</editor-fold>
 
-    //<editor-fold desc="接口：获取树的大小, 是否为空, 清空, 判断是否包含元素">
+    //<editor-fold desc="接口：获取树的大小">
     public int size() {
         return size;
     }
+    //</editor-fold>
 
+    //<editor-fold desc="接口：是否为空">
     public boolean isEmpty() {
         return size == 0;
     }
+    //</editor-fold>
 
+    //<editor-fold desc="接口：清空">
     public void clear() {
 
     }
+    //</editor-fold>
 
+    //<editor-fold desc="接口：判断是否包含元素">
     public boolean contains(E element) {
         return false;
     }
@@ -140,58 +146,71 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
     //</editor-fold>
 
     //<editor-fold desc="前序遍历">
-    public void preorderTraversal() {
-        preorderTraversal(root);
+    public void preorderTraversal(Visitor<E> visitor) {
+        if (visitor == null) {
+            return;
+        }
+        preorderTraversal(root, visitor);
     }
     /**
      * 递归前序遍历
      * @param node 节点
      */
-    private void preorderTraversal(Node<E> node) {
-        if (node == null) {
+    private void preorderTraversal(Node<E> node, Visitor<E> visitor) {
+        if (node == null || visitor.stop) {
             return;
         }
-        System.out.println(node.element);
-        preorderTraversal(node.left);
-        preorderTraversal(node.right);
+        visitor.stop = visitor.visit(node.element);
+        preorderTraversal(node.left, visitor);
+        preorderTraversal(node.right, visitor);
     }
     //</editor-fold>
 
     //<editor-fold desc="中序遍历">
-    public void inorderTraversal() {
-        inorderTraversal(root);
+    public void inorderTraversal(Visitor<E> visitor) {
+        if (visitor == null) {
+            return;
+        }
+        inorderTraversal(root, visitor);
     }
 
     /**
      * 中序遍历
      * @param node 节点
      */
-    private void inorderTraversal(Node<E> node) {
-        if (node == null) {
+    private void inorderTraversal(Node<E> node, Visitor<E> visitor) {
+        if (node == null || visitor.stop) {
             return;
         }
-        inorderTraversal(node.left);
-        System.out.println(node.element);
-        inorderTraversal(node.right);
+        inorderTraversal(node.left, visitor);
+        if (visitor.stop) {
+            return;
+        }
+        visitor.stop = visitor.visit(node.element);
+        inorderTraversal(node.right, visitor);
     }
     //</editor-fold>
 
     //<editor-fold desc="后序遍历">
-    public void postorderTraversal() {
-        postorderTraversal(root);
+    public void postorderTraversal(Visitor<E> visitor) {
+        if (visitor == null) {
+            return;
+        }
+        postorderTraversal(root, visitor);
     }
 
     /**
      * 后序遍历
      * @param node 节点
      */
-    private void postorderTraversal(Node<E> node) {
-        if (node == null) {
+    private void postorderTraversal(Node<E> node, Visitor<E> visitor) {
+        if (node == null || visitor.stop) {
             return;
         }
-        postorderTraversal(node.left);
-        postorderTraversal(node.right);
-        System.out.println(node.element);
+        postorderTraversal(node.left, visitor);
+        postorderTraversal(node.right, visitor);
+        if (visitor.stop) return;
+        visitor.stop = visitor.visit(node.element);
     }
     //</editor-fold>
 
@@ -199,8 +218,8 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
     /**
      * 层序遍历
      */
-    public void levelOrderTraversal() {
-        if (root == null) return;
+    public void levelOrderTraversal(Visitor<E> visitor) {
+        if (root == null || visitor == null) return;
 
         Queue<Node<E>> queue = new LinkedList<>();
         // 根节点先入队
@@ -209,7 +228,10 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
         while (!queue.isEmpty()) {
             // 取出队列头元素
             Node<E> node = queue.poll();
-            System.out.println(node.element);
+            // 调用 visitor 的 visit 方法，实现自定义逻辑
+            if (visitor.visit(node.element)) {
+                return;
+            }
             if (node.left != null) {
                 queue.offer(node.left);
             }
@@ -245,6 +267,17 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
         if (element == null) {
             throw new IllegalArgumentException("element must not be null");
         }
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="自定义遍历接口">
+    public static abstract class Visitor<E> {
+        /**
+         * @param element 元素
+         * @return true 停止遍历
+         */
+        abstract boolean visit(E element);
+        boolean stop;
     }
     //</editor-fold>
 
