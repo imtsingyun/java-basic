@@ -25,20 +25,21 @@ public class Main {
         for (Integer integer : arr) {
             bst.add(integer);
         }
-//        BinaryTrees.println(bst);
+        BinaryTrees.println(bst);
 
         System.out.println("=========================================================");
         bst.levelOrderTraversal(new BinarySearchTree1.Visitor<Integer>() {
             @Override
             boolean visit(Integer element) {
-                System.out.print("-" + element);
+//                System.out.print("-" + element);
                 return element == 8;
             }
         });
         System.out.println();
         System.out.println("=========================================================");
 
-
+        bst.remove(2);
+        BinaryTrees.println(bst);
 
         BinarySearchTree1<Student> bst2 = new BinarySearchTree1<>();
         bst2.add(new Student(15, 100, "tim2"));
