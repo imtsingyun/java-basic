@@ -6,6 +6,8 @@
  */
 package org.mindidea.datastructure_006二叉树.demo2;
 
+import java.util.Comparator;
+
 /**
  * @author Tsingyun(青雲)
  * @version V1.0
@@ -27,7 +29,13 @@ public class Main {
         bst2.add(new Student(15, 100, "tim2"));
         bst2.add(new Student(11, 99, "tim3"));
         bst2.add(new Student(12, 109, "tim1"));
+        bst2.show();
 
+        BinarySearchTree<Student> bst3 = new BinarySearchTree<>(Comparator.comparingInt(o -> o.age));
+        bst3.add(new Student(15, 100, "tim2"));
+        bst3.add(new Student(11, 99, "tim3"));
+        bst3.add(new Student(12, 109, "tim1"));
+        bst3.show();
     }
 
     private static class Student implements Comparable<Student> {
@@ -48,7 +56,7 @@ public class Main {
 
         @Override
         public String toString() {
-            return  name + ":" + score;
+            return  name + ":" + age + ":" + score;
         }
     }
 }

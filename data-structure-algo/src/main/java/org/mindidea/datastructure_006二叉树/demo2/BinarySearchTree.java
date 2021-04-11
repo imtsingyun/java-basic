@@ -6,7 +6,7 @@
  */
 package org.mindidea.datastructure_006二叉树.demo2;
 
-import javafx.scene.Parent;
+import java.util.Comparator;
 
 /**
  * @author Tsingyun(青雲)
@@ -14,11 +14,20 @@ import javafx.scene.Parent;
  * @createTime 2021/1/23 18:03
  * @blog https://mindidea.org
  */
+@SuppressWarnings(value = {"unused"})
 public class BinarySearchTree<E> {
 
     private int size;
-
     private Node<E> root;
+    private Comparator<E> comparator;
+
+    public BinarySearchTree() {
+        this(null);
+    }
+
+    public BinarySearchTree(Comparator<E> comparator) {
+        this.comparator = comparator;
+    }
 
     public int size() {
         return size;
@@ -40,6 +49,7 @@ public class BinarySearchTree<E> {
      * @author Tsingyun(青雲)
      * @createTime 2021/1/23 18:25
      */
+    @SuppressWarnings("Duplicates")
     public void add(E element) {
         elementNotNullCheck(element);
         // 添加第一个节点
@@ -52,15 +62,6 @@ public class BinarySearchTree<E> {
         // 1. 找到父节点
         // 2. 创建新节点
         // 3. parent.left = node 或 parent.right = node
-        findPosition(element);
-    }
-
-    /**
-     * 查找插入元素的位置
-     * @param element 要插入的新元素
-     */
-    @SuppressWarnings("Duplicates")
-    private void findPosition(E element) {
         Node<E> node = root;
         Node<E> parent = root;
         int compare = 0;
@@ -82,10 +83,47 @@ public class BinarySearchTree<E> {
         if (compare > 0) {
             parent.right = newNode;
         } else {
-            assert parent != null;
             parent.left = newNode;
         }
         size++;
+    }
+
+    @SuppressWarnings("Duplicates")
+    public void addV2(E element) {
+        elementNotNullCheck(element);
+        if (root == null) {
+            root = new Node<>(element, null);
+            size++;
+            return;
+        }
+        Node<E> node = root;
+        int compare = 0;
+        Node<E> parent = null;
+        while (node != null) {
+            compare = compare(element, node.element);
+            parent = node;
+            if (compare > 0)
+                node = node.right;
+            else if (compare < 0)
+                node = node.left;
+            else return;
+        }
+        Node<E> newNode = new Node<>(element, parent);
+        if (compare > 0)
+            parent.right = newNode;
+        else
+            parent.left = newNode;
+        size++;
+    }
+
+    /**
+     * 查找插入元素的位置
+     *
+     * @param element 要插入的新元素
+     */
+    @SuppressWarnings("Duplicates")
+    private void findPosition(E element) {
+
     }
 
     public void remove(E element) {
@@ -107,6 +145,9 @@ public class BinarySearchTree<E> {
      */
     @SuppressWarnings("unchecked")
     private int compare(E e1, E e2) {
+        if (comparator != null) {
+            return comparator.compare(e1, e2);
+        }
         // 使用 Java 自带比较器
         return ((Comparable<E>) e1).compareTo(e2);
     }
@@ -133,26 +174,26 @@ public class BinarySearchTree<E> {
         // 用一个字符串数组来存储每个位置应显示的元素
         String[][] res = new String[arrayHeight][arrayWidth];
         // 对数组进行初始化，默认为一个空格
-        for (int i = 0; i < arrayHeight; i ++) {
-            for (int j = 0; j < arrayWidth; j ++) {
+        for (int i = 0; i < arrayHeight; i++) {
+            for (int j = 0; j < arrayWidth; j++) {
                 res[i][j] = " ";
             }
         }
 
         // 从根节点开始，递归处理整个树
         // res[0][(arrayWidth + 1)/ 2] = (char)(root.val + '0');
-        writeArray(root, 0, arrayWidth/ 2, res, treeDepth);
+        writeArray(root, 0, arrayWidth / 2, res, treeDepth);
 
         // 此时，已经将所有需要显示的元素储存到了二维数组中，将其拼接并打印即可
-        for (String[] line: res) {
+        for (String[] line : res) {
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < line.length; i ++) {
+            for (int i = 0; i < line.length; i++) {
                 sb.append(line[i]);
                 if (line[i].length() > 1 && i <= line.length - 1) {
-                    i += line[i].length() > 4 ? 2: line[i].length() - 1;
+                    i += line[i].length() > 4 ? 2 : line[i].length() - 1;
                 }
             }
-            System.out.println(sb.toString());
+            System.out.println(sb);
         }
     }
 
@@ -186,7 +227,7 @@ public class BinarySearchTree<E> {
         }
     }
 
-    private static class Node<E> {
+    public static class Node<E> {
         E element;
         Node<E> left;
         Node<E> right;
