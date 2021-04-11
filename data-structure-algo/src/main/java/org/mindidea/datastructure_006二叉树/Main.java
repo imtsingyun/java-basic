@@ -17,6 +17,7 @@ import java.util.Comparator;
  * @createTime 2021/1/23 21:48
  * @blog https://mindidea.org
  */
+@SuppressWarnings("Duplicates")
 public class Main {
     public static void main(String[] args) {
         Integer[] arr = new Integer[]{
