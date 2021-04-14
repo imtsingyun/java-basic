@@ -27,21 +27,20 @@ public class Main {
         for (Integer integer : arr) {
             bst.add(integer);
         }
-        BinaryTrees.println(bst);
+//        BinaryTrees.println(bst);
 
         System.out.println("=========================================================");
         bst.levelOrderTraversal(new BinaryTree.Visitor<Integer>() {
             @Override
             public boolean visit(Integer element) {
                 System.out.print("-" + element);
-                return false;
+                return element == 8;
             }
         });
         System.out.println();
         System.out.println("=========================================================");
 
-        bst.remove(2);
-        BinaryTrees.println(bst);
+
 
         BST<Student> bst2 = new BST<>();
         bst2.add(new Student(15, 100, "tim2"));
