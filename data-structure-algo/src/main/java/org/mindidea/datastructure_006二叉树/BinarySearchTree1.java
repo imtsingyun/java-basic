@@ -141,7 +141,72 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
 
     //<editor-fold desc="删除元素">
     public void remove(E element) {
+        remove(getNode(element));
+    }
 
+    private void remove(Node<E> node) {
+        if (node == null) {
+            return;
+        }
+        size--;
+        // 度为 2
+        if (node.hasTwoChildren()) {
+            // 前驱节点
+            Node<E> p = precursor(node);
+            // 使用前驱节点的值替换度为2的节点的值
+            node.element = p.element;
+            // 下面实际上要删除的节点是前驱节点 p
+            node = p;
+        }
+
+        // 此处 node 的度必然为 0 或 1
+        Node<E> replacement = node.left != null ? node.left : node.right;
+        // node 度为 1
+        if (replacement != null) {
+            replacement.parent = node.parent;
+            // node 度为 1，并且上根节点
+            if (node.parent == null) {
+                root = replacement;
+            }
+            else if (node == node.parent.left) {
+                node.parent.left = replacement;
+            } else {
+                node.parent.right = replacement;
+            }
+        }
+        // node 是叶子节点，并且是根节点
+        else if (node.parent == null){
+            root = null;
+        }
+        // node 是叶子节点，但不是根节点
+        else {
+            if (node == node.parent.left) {
+                node.parent.left = null;
+            } else {
+                node.parent.right = null;
+            }
+        }
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="根据元素获取节点">
+    /**
+     * 根据元素获取节点
+     * @param element 元素
+     * @return 节点
+     */
+    private Node<E> getNode(E element) {
+        Node<E> node = root;
+        while (node != null) {
+            int cmp = compare(element, node.element);
+            if (cmp == 0) return node;
+            if (cmp > 0) {
+                node = node.right;
+            } else {
+                node = node.left;
+            }
+        }
+        return null;
     }
     //</editor-fold>
 
@@ -366,6 +431,14 @@ public class BinarySearchTree1<E> implements BinaryTreeInfo {
         public Node(E element, Node<E> parent) {
             this.element = element;
             this.parent = parent;
+        }
+
+        public boolean isLeaf() {
+            return left == null && right == null;
+        }
+
+        public boolean hasTwoChildren() {
+            return left != null && right != null;
         }
     }
     //</editor-fold>

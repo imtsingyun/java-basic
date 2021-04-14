@@ -6,7 +6,6 @@
  */
 package org.mindidea.datastructure_006二叉树;
 
-import org.mindidea.utils.BinaryTree;
 import org.mindidea.utils.printer.BinaryTrees;
 
 import java.util.Comparator;
@@ -23,14 +22,14 @@ public class Main {
         Integer[] arr = new Integer[]{
                 7, 4, 9, 2, 5, 8, 11, 3
         };
-        BST<Integer> bst = new BST<>();
+        BinarySearchTree1<Integer> bst = new BinarySearchTree1<>();
         for (Integer integer : arr) {
             bst.add(integer);
         }
-//        BinaryTrees.println(bst);
+        BinaryTrees.println(bst);
 
         System.out.println("=========================================================");
-        bst.levelOrderTraversal(new BinaryTree.Visitor<Integer>() {
+        bst.levelOrderTraversal(new BinarySearchTree1.Visitor<Integer>() {
             @Override
             public boolean visit(Integer element) {
                 System.out.print("-" + element);
@@ -41,23 +40,21 @@ public class Main {
         System.out.println("=========================================================");
 
 
-
-        BST<Student> bst2 = new BST<>();
+        BinarySearchTree1<Student> bst2 = new BinarySearchTree1<>();
         bst2.add(new Student(15, 100, "tim2"));
         bst2.add(new Student(11, 99, "tim3"));
         bst2.add(new Student(12, 109, "tim1"));
         BinaryTrees.println(bst2);
         System.out.println("=========================================================");
 
-        BST<Student> bst3 =
-                new BST<>(Comparator.comparingInt(o -> o.age));
+        BinarySearchTree1<Student> bst3 =
+                new BinarySearchTree1<>(Comparator.comparingInt(o -> o.age));
         bst3.add(new Student(15, 100, "tim2"));
         bst3.add(new Student(11, 99, "tim3"));
         bst3.add(new Student(12, 109, "tim1"));
         BinaryTrees.println(bst3);
     }
 
-    //region 测试类
     private static class Student implements Comparable<Student> {
         int age;
         int score;
@@ -79,5 +76,4 @@ public class Main {
             return name + ":" + age + ":" + score;
         }
     }
-    //endregion
 }
