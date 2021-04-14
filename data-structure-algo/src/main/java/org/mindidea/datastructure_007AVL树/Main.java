@@ -1,7 +1,5 @@
 package org.mindidea.datastructure_007AVL树;
 
-import org.mindidea.utils.printer.BinaryTrees;
-
 @SuppressWarnings("Duplicates")
 public class Main {
     public static void main(String[] args) {
